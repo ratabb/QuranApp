@@ -1,46 +1,34 @@
 package id.ratabb.quran.ui.ayah
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.material.AlertDialog
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.DialogProperties
 import id.ratabb.quran.ui.common.TextArabic
 import items.entity.AyahEntity
 import items.entity.SurahWithAyah
 
 @Composable
-fun WithAyahScreen(numberSurah: Int, vm: WithAyahViewModel) {
-    vm.setNumberSurah(numberSurah)
-    val surahWithAyah: SurahWithAyah = vm.withAyahData.observeAsState().value ?: return
-    val basmallah: AyahEntity = vm.basmalah.observeAsState().value
-        ?: throw IllegalStateException("Can't load basmallah")
-    WithAyahContent(surahWithAyah, basmallah)
+fun WithAyahScreen(vm: WithAyahViewModel) {
+    val surahWithAyah = vm.withAyahData.observeAsState().value
+    val basmallah = vm.basmalah.observeAsState().value
+    if (surahWithAyah != null && basmallah != null) WithAyahContent(surahWithAyah, basmallah)
 }
 
 @Composable
@@ -68,19 +56,15 @@ fun WithAyahContent(
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun AyahEntityGrid(data: List<AyahEntity>) {
-    LazyVerticalGrid(
-        modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 12.dp),
-        cells = GridCells.Fixed(1),
-        content = { items(data.size) { AyahEntityItem(data[it]) } }
-    )
+    LazyColumn(Modifier.padding(12.dp)) {
+        items(data.size, key = { data[it].numberInSurah }) { AyahEntityItem(data[it]) }
+    }
 }
 
 @Composable
 fun AyahEntityItem(ayahEntity: AyahEntity) {
-    val (showDialog, setShowDialog) = remember { mutableStateOf(false) }
     Card(
         modifier = Modifier
             .padding(start = 4.dp, end = 4.dp, top = 4.dp, bottom = 8.dp)
@@ -88,73 +72,29 @@ fun AyahEntityItem(ayahEntity: AyahEntity) {
         elevation = 8.dp,
         border = BorderStroke(1.dp, MaterialTheme.colors.primary)
     ) {
-        Column {
-            Row {
-                TextArabic(
-                    text = ayahEntity.textArabic,
-                    textAlign = TextAlign.Justify,
-                    style = MaterialTheme.typography.body1,
-                    modifier = Modifier.fillMaxWidth().weight(1F)
-                        .padding(start = 8.dp, end = 8.dp, top = 16.dp),
-                    fontWeight = FontWeight.SemiBold
-                )
-                IconButton(onClick = { setShowDialog(true) }) {
-                    Icon(
-                        imageVector = Icons.Filled.MoreVert,
-                        contentDescription = null
-                    )
-                }
-            }
+        Column(modifier = Modifier.fillMaxSize().padding(8.dp)) {
+            TextArabic(
+                text = ayahEntity.textArabic,
+                textAlign = TextAlign.Justify,
+                style = MaterialTheme.typography.h6,
+                fontWeight = FontWeight.SemiBold
+            )
+            Divider(color = Color.LightGray, modifier = Modifier.padding(top = 8.dp, bottom = 8.dp))
+            // Text transliterasi in English
             Text(
                 text = ayahEntity.textEnglish!!,
                 textAlign = TextAlign.Justify,
                 style = MaterialTheme.typography.body2,
-                modifier = Modifier.fillMaxWidth()
-                    .padding(start = 8.dp, end = 8.dp, top = 16.dp, bottom = 16.dp),
+                fontWeight = FontWeight.Normal
+            )
+            Divider(color = Color.LightGray, modifier = Modifier.padding(top = 8.dp, bottom = 8.dp))
+            // Text translation in Bahasa Indonesia
+            Text(
+                text = ayahEntity.transIndo!!,
+                textAlign = TextAlign.Justify,
+                style = MaterialTheme.typography.body2,
                 fontWeight = FontWeight.Normal
             )
         }
-    }
-    MoreAyahEntity(showDialog, ayahEntity) {
-        setShowDialog(false)
-    }
-}
-
-@Composable
-fun MoreAyahEntity(
-    isShow: Boolean,
-    ayahEntity: AyahEntity,
-    onDismiss: () -> Unit
-) {
-    if (isShow) {
-        AlertDialog(
-            onDismissRequest = onDismiss,
-            properties = DialogProperties(
-                dismissOnBackPress = false,
-                dismissOnClickOutside = false
-            ),
-            title = {
-                TextArabic(
-                    text = ayahEntity.textArabic,
-                    textAlign = TextAlign.Justify,
-                    modifier = Modifier.fillMaxWidth(),
-                    style = MaterialTheme.typography.body1,
-                    fontWeight = FontWeight.SemiBold
-                )
-            },
-            text = {
-                Text(
-                    text = ayahEntity.transIndo!!,
-                    textAlign = TextAlign.Justify,
-                    fontWeight = FontWeight.Normal,
-                    style = MaterialTheme.typography.body2
-                )
-            },
-            confirmButton = {
-                TextButton(onClick = onDismiss) {
-                    Text(text = stringResource(android.R.string.ok))
-                }
-            }
-        )
     }
 }

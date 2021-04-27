@@ -29,11 +29,13 @@ import androidx.hilt.navigation.compose.hiltNavGraphViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.createGraph
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import id.ratabb.quran.R
 import id.ratabb.quran.ui.ayah.WithAyahScreen
+import id.ratabb.quran.ui.ayah.WithAyahViewModel
 import id.ratabb.quran.ui.common.FunctionalityNotAvailablePopup
 import id.ratabb.quran.ui.surah.SurahInfoListScreen
 
@@ -48,32 +50,28 @@ const val ROUTE_WITH_AYAH = "$WITH_AYAH{$NUM_SURAH}"
 fun QuranAppUI() {
     val appBarColor = MaterialTheme.colors.surface.copy(alpha = 0.87f)
     val navController = rememberNavController()
+    val navGraph = navController.createGraph(startDestination = ROUTE_SURAH) {
+        composable(ROUTE_SURAH) { SurahInfoListScreen(navController, vm = hiltNavGraphViewModel()) }
+        composable(
+            ROUTE_WITH_AYAH,
+            arguments = listOf(
+                navArgument(NUM_SURAH) {
+                    type = NavType.IntType
+                    defaultValue = 1
+                }
+            )
+        ) { backStackEntry ->
+            val numberSurah = backStackEntry.arguments?.getInt(NUM_SURAH) ?: 1
+            val viewModel: WithAyahViewModel = hiltNavGraphViewModel()
+            viewModel.setNumberSurah(numberSurah)
+            WithAyahScreen(viewModel)
+        }
+    }
     SysUI()
     Surface(color = MaterialTheme.colors.background) {
         Column {
             QuranAppBar(appBarColor, Modifier.fillMaxWidth())
-            NavHost(navController, startDestination = ROUTE_SURAH) {
-                composable(ROUTE_SURAH) {
-                    SurahInfoListScreen(
-                        navController = navController,
-                        vm = hiltNavGraphViewModel()
-                    )
-                }
-                composable(
-                    ROUTE_WITH_AYAH,
-                    arguments = listOf(
-                        navArgument(NUM_SURAH) {
-                            type = NavType.IntType
-                            defaultValue = 1
-                        }
-                    )
-                ) { backStackEntry ->
-                    WithAyahScreen(
-                        numberSurah = backStackEntry.arguments?.getInt(NUM_SURAH) ?: 1,
-                        vm = hiltNavGraphViewModel()
-                    )
-                }
-            }
+            NavHost(navController, navGraph)
         }
     }
 }
@@ -103,17 +101,13 @@ fun QuranAppBar(
         backgroundColor = backgroundColor,
         actions = {
             CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                IconButton(
-                    onClick = { setShowDialog(true) }
-                ) {
+                IconButton(onClick = { setShowDialog(true) }) {
                     Icon(
                         imageVector = Icons.Filled.Search,
                         contentDescription = stringResource(R.string.search)
                     )
                 }
-                IconButton(
-                    onClick = { setShowDialog(true) }
-                ) {
+                IconButton(onClick = { setShowDialog(true) }) {
                     Icon(
                         imageVector = Icons.Filled.MoreVert,
                         contentDescription = null

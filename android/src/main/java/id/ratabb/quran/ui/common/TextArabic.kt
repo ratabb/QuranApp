@@ -1,5 +1,6 @@
 package id.ratabb.quran.ui.common
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -47,7 +48,7 @@ fun TextArabic(
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
         Text(
             text = text,
-            modifier = modifier,
+            modifier = modifier.fillMaxWidth(),
             color = color,
             fontSize = fontSize,
             fontStyle = fontStyle,
