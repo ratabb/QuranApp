@@ -82,93 +82,56 @@ android {
 dependencies {
     implementation projects.items
     implementation projects.itemsAndroid
-
+    //
     coreLibraryDesugaring libs.desugar
-
     // NOTES: temp hack: use compose at AS 4.1
     add("kotlinCompilerPluginClasspath", libs.compose.compiler)
+    implementation libs.accompanist.insets
+    implementation libs.accompanist.systemuicontroller
+    implementation libs.activity.activity
+    implementation libs.activity.compose
     implementation libs.compose.foundation.foundation
     implementation libs.compose.foundation.layout
-    implementation libs.compose.material.material
     implementation libs.compose.material.iconscore
     implementation libs.compose.material.iconsext
-    implementation libs.compose.runtime.runtime
+    implementation libs.compose.material.material
     implementation libs.compose.runtime.livedata
-    implementation libs.compose.ui.ui
+    implementation libs.compose.runtime.runtime
     implementation libs.compose.ui.graphics
     implementation libs.compose.ui.text
+    implementation libs.compose.ui.ui
     implementation libs.compose.ui.unit
-    implementation libs.compose.ui.util
-    // can't use this at AS 4.1 ;/
-    // implementation libs.compose.ui.tooling
-
+    implementation libs.core.core
+    implementation libs.coroutines.android
+    implementation libs.coroutines.core.jvm
+    implementation libs.customactivityoncrash
+    implementation libs.dagger.dagger
+    implementation libs.dagger.hilt.android
+    implementation libs.dagger.hilt.core
+    implementation libs.fragment.fragment
+    implementation libs.hilt.lifecycle.viewmodel
+    implementation libs.hilt.navigation.compose
+    implementation libs.hilt.navigation.navigation
+    implementation libs.javax.inject
+    implementation libs.kotlin.stdlib.stdlib
+    implementation libs.leakcanary.plumber.android
     implementation libs.lifecycle.livedata.core
     implementation libs.lifecycle.viewmodel.compose
     implementation libs.lifecycle.viewmodel.ktx
     implementation libs.lifecycle.viewmodel.savedstate
     implementation libs.lifecycle.viewmodel.viewmodel
-
-    androidTestImplementation libs.compose.ui.testjunit4
-
-    implementation libs.kotlin.stdlib.stdlib
-
-    implementation libs.browser
-    implementation libs.core.core
-    implementation libs.core.ktx
-    implementation libs.documentfile
-    implementation libs.fragment.fragment
-    implementation libs.fragment.ktx
-    implementation libs.recyclerview
-    implementation libs.customview
-    implementation libs.activity.activity
-    implementation libs.activity.compose
-    implementation libs.appcompat
-
     implementation libs.material.material
-    implementation libs.material.compose.themeAdapter
-
-    implementation libs.timber
-    implementation libs.customactivityoncrash
-    implementation libs.leakcanary.plumber.android
-    debugImplementation libs.leakcanary.android
-
-    implementation libs.coroutines.android
-    implementation libs.coroutines.core.jvm
-    //
-    implementation libs.coil.coil
-    implementation libs.coil.base
-
-    implementation libs.serialization.json.json
-    implementation libs.serialization.json.jvm
-    implementation libs.serialization.core.jvm
-
-    implementation libs.accompanist.coil
-    implementation libs.accompanist.insets
-    implementation libs.accompanist.systemuicontroller
-    implementation libs.accompanist.pager.pager
-    implementation libs.accompanist.pager.indicators
-    implementation libs.accompanist.flowlayout
-
-    implementation libs.dagger.dagger
-    implementation libs.dagger.hilt.core
-    implementation libs.dagger.hilt.android
-    implementation libs.javax.inject
-    kapt libs.dagger.hilt.compiler
-
-    implementation libs.hilt.common.common
-    implementation libs.hilt.lifecycle.viewmodel
-    implementation libs.hilt.navigation.navigation
-    implementation libs.hilt.navigation.compose
-
     implementation libs.navigation.common.common
     implementation libs.navigation.common.ktx
     implementation libs.navigation.compose
-    implementation libs.navigation.fragment.ktx
     implementation libs.navigation.runtime.runtime
-    implementation libs.navigation.runtime.ktx
-    implementation libs.navigation.ui.ktx
-
     implementation libs.room.runtime
+    implementation libs.serialization.json.json
+    implementation libs.serialization.json.jvm
+    implementation libs.timber
+    //
+    kapt libs.dagger.hilt.compiler
+    debugImplementation libs.leakcanary.android
     // UI Tests
     androidTestImplementation libs.compose.ui.testjunit4
 }

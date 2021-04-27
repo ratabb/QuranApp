@@ -20,6 +20,12 @@ allprojects {
             if (group ==~ /org\.jetbrains\.kotlin/ && name ==~ /kotlin.*/) {
                 drd.useVersion libs.versions.kotlin.get()
             }
+            if (group ==~ /androidx\.appcompat/ && name ==~ /appcompat.*/) {
+                drd.useVersion libs.versions.appcompat.get()
+            }
+            if (group ==~ /com\.squareup\.okio/ && name ==~ /okio.*/) {
+                drd.useVersion libs.versions.okio.get()
+            }
         }
     }
 }
@@ -28,7 +34,7 @@ dependencyAnalysis {
     issues {
         all {
             onAny {
-                severity 'warn' // <- temp 'fail'
+                severity 'fail'
             }
         }
     }
