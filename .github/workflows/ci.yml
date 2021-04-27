@@ -80,5 +80,5 @@ jobs:
       - name: Upload App Debug
         uses: actions/upload-artifact@v2
         with:
-          name: cipher-cli-binary
-          path: ./app/build/outputs/apk/debug/app-debug.apk
+          name: android-debug.apk
+          path: ./android/build/outputs/apk/debug/android-debug.apk
