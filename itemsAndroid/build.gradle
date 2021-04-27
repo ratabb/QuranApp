@@ -1,0 +1,51 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+dependencies {
+    api projects.items
+    api libs.kotlin.stdlib.jdk8
+    api libs.room.runtime
+    api libs.javax.inject
+
+    implementation libs.coroutines.android
+    implementation libs.room.common
+    implementation libs.room.ktx
+    implementation libs.sqlite
+    kapt libs.room.compiler
+
+    // TODO: unit test
+    testImplementation libs.room.testing
+    testImplementation libs.serialization.json.jvm
+    testImplementation libs.junit
+    testImplementation libs.hamcrest
+}
+
+android {
+    compileSdkVersion rootProject.androidCompileSdk as Integer
+    buildToolsVersion rootProject.androidBuildTools
+    defaultConfig {
+        minSdkVersion rootProject.androidMinSdk as Integer
+        targetSdkVersion rootProject.androidTargetSdk as Integer
+        versionCode 1
+        versionName '1.0.0'
+    }
+    buildFeatures.buildConfig = false
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        warningsAsErrors true
+        abortOnError true
+        checkTestSources false
+        htmlReport false
+        xmlReport false
+        textReport true
+        textOutput 'stdout'
+        disable 'ObsoleteLintCustomCheck'
+    }
+}

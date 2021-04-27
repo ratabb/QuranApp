@@ -1,0 +1,14 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+dependencies {
+    api libs.kotlin.stdlib.jdk8
+    api libs.serialization.json.jvm
+    api libs.serialization.core.jvm
+    implementation libs.room.common
+    //
+    testImplementation libs.junit
+    testImplementation libs.hamcrest
+}

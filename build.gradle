@@ -1,0 +1,54 @@
+plugins {
+    //
+    id 'androidx.navigation.safeargs.kotlin' apply false
+    id 'com.android.application' apply false
+    id 'dagger.hilt.android.plugin' apply false
+    id 'org.jetbrains.kotlin.jvm' apply false
+
+    id 'com.autonomousapps.dependency-analysis'
+    id 'com.diffplug.spotless'
+    id 'com.github.ben-manes.versions'
+}
+
+allprojects {
+    apply from: "$rootDir/spotless.gradle"
+
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails drd ->
+            def group = drd.requested.group
+            def name = drd.requested.name
+            if (group ==~ /org\.jetbrains\.kotlin/ && name ==~ /kotlin.*/) {
+                drd.useVersion libs.versions.kotlin.get()
+            }
+        }
+    }
+}
+
+dependencyAnalysis {
+    issues {
+        all {
+            onAny {
+                severity 'warn' // <- temp 'fail'
+            }
+        }
+    }
+}
+
+tasks.named('dependencyUpdates').configure {
+    def isStable = { String version -> version ==~ /^[0-9,.v-]+(-r)?$/ }
+    // reject only if we use stable and candidate not stable
+    rejectVersionIf { !isStable(it.candidate.version) && isStable(it.currentVersion) }
+    checkForGradleUpdate = false //
+}
+
+subprojects {
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            jvmTarget = '1.8'
+            allWarningsAsErrors = true
+            verbose = true
+            useIR = true
+            freeCompilerArgs = ["-Xinline-classes"]
+        }
+    }
+}

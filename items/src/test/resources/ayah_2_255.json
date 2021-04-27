@@ -1,0 +1,89 @@
+{
+  "code": 200,
+  "status": "OK.",
+  "message": "Success fetching ayah",
+  "data": {
+    "number": {
+      "inQuran": 262,
+      "inSurah": 255
+    },
+    "meta": {
+      "juz": 3,
+      "page": 42,
+      "manzil": 1,
+      "ruku": 35,
+      "hizbQuarter": 17,
+      "sajda": {
+        "recommended": false,
+        "obligatory": false
+      }
+    },
+    "text": {
+      "arab": "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+      "transliteration": {
+        "en": "Allahu laaa ilaaha illaa Huwal Haiyul Qaiyoom; laa taakhuzuhoo sinatunw wa laa nawm; lahoo maa fissamaawaati wa maa fil ard; man zal lazee yashfa'u indahooo illaa bi-iznih; ya'lamu maa baina aydeehim wa mww khalfahum wa laa yuheetoona bishai'im min 'ilmihee illaa bimaa shaaa'; wasi'a Kursiyyuhus samaawaati wal arda wa laa ya'ooduho hifzuhumaa; wa Huwal Aliyyul 'Azeem"
+      }
+    },
+    "translation": {
+      "en": "Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is [presently] before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.",
+      "id": "Allah, tidak ada tuhan selain Dia. Yang Mahahidup, Yang terus menerus mengurus (makhluk-Nya), tidak mengantuk dan tidak tidur. Milik-Nya apa yang ada di langit dan apa yang ada di bumi. Tidak ada yang dapat memberi syafaat di sisi-Nya tanpa izin-Nya. Dia mengetahui apa yang di hadapan mereka dan apa yang di belakang mereka, dan mereka tidak mengetahui sesuatu apa pun tentang ilmu-Nya melainkan apa yang Dia kehendaki. Kursi-Nya meliputi langit dan bumi. Dan Dia tidak merasa berat memelihara keduanya, dan Dia Mahatinggi, Mahabesar."
+    },
+    "audio": {
+      "primary": "https://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/262",
+      "secondary": [
+        "https://cdn.islamic.network/quran/audio/128/ar.alafasy/262.mp3",
+        "https://cdn.islamic.network/quran/audio/64/ar.alafasy/262.mp3"
+      ]
+    },
+    "tafsir": {
+      "id": {
+        "short": "Allah; tidak ada tuhan yang pantas disembah dan dipertuhan selain Dia. Yang Mahahidup, kekal, dan memiliki semua makna kehidupan yang sempurna, Yang terus menerus mengurus makhluk-Nya. Tidak seperti manusia, Dia tidak mengantuk dan tidak pula tidur, sebab keduanya adalah sifat kekurangan yang membuat-Nya tidak mampu mengurus makhluk-Nya. Milik-Nya apa yang ada di langit dan apa yang ada di bumi. Dia Yang menciptakan, memelihara, memiliki, dan bertindak terhadap semua itu. Tidak ada yang dapat memberi syafaat pertolongan di sisi-Nya tanpa izin-Nya. Dia demikian perkasa dan kuasa sehingga berbicara di hadapan-Nya pun harus setelah memperolah restu-Nya, bahkan apa yang disampaikan itu harus sesuatu yang benar. Dia mengetahui apa yang di hadapan mereka, yakni apa saja yang sedang dan akan terjadi, dan apa yang di belakang mereka, yakni sesuatu yang telah berlalu. Allah mengetahui apa yang mereka lakukan dan rencanakan, baik yang berkaitan dengan masa kini, masa lampau, atau masa depan. Dan mereka tidak mengetahui sesuatu apa pun tentang ilmu-Nya melainkan apa yang Dia kehendaki untuk mereka ketahui dengan memperlihatkan dan memberitahukannya. Kursi-Nya, yaitu kekuasaan, ilmu, atau kursi tempat kedua kaki Tuhan (yang tidak diketahui hakikatnya kecuali oleh Allah) berpijak, sangat luas, meliputi langit dan bumi. Dan jangan menduga karena kursi-Nya terlalu luas, Dia letih mengurus itu semua. Tidak! Dia tidak merasa berat maupun kesulitan memelihara keduanya, dan Dia Mahatinggi zat dan sifat-sifat-Nya jika dibanding makhluk-makhlukNya, Mahabesar dengan segala keagungan dan kekuasaan-Nya. Inilah Ayat Kursi, ayat teragung dalam Al-Qur'an karena mencakup namanama dan sifat-sifat Allah yang menunjukkan kesempurnaan zat, ilmu, kekuasaan, dan keagungan-Nya. Ayat ini dinamakan Ayat Kursi. Siapa yang membacanya akan memperoleh perlindungan Allah dan tidak akan diganggu setan.",
+        "long": "Allah adalah Tuhan Yang Maha Esa, tidak ada tuhan selain Dia, dan hanya Dia yang berhak untuk disembah. Adapun tuhan-tuhan yang lain yang disembah oleh sebagian manusia dengan alasan yang tidak benar, memang banyak jumlahnya. Akan tetapi Tuhan yang sebenarnya hanyalah Allah. Hanya Dialah Yang hidup abadi, yang ada dengan sendiri-Nya, dan Dia pulalah yang selalu mengatur makhluk-Nya tanpa ada kelalaian sedikit pun.\n\nKemudian ditegaskan lagi bahwa Allah tidak pernah mengantuk. Orang yang berada dalam keadaan mengantuk tentu hilang kesadarannya, sehingga dia tidak akan dapat melakukan pekerjaannya dengan baik, padahal Allah swt senantiasa mengurus dan memelihara makhluk-Nya dengan baik, tidak pernah kehilangan kesadaran atau pun lalai.\n\nKarena Allah tidak pernah mengantuk, sudah tentu Dia tidak pernah tidur, karena mengantuk adalah permulaan dari proses tidur. Orang yang tidur lebih banyak kehilangan kesadaran daripada orang yang mengantuk.\n\nSifat Allah yang lain yang disebutkan dalam ayat ini ialah bahwa Dialah yang mempunyai kekuasaan dan yang memiliki apa yang ada di langit dan di bumi. Dialah yang mempunyai kekuatan dan kekuasaan yang tak terbatas, sehingga Dia dapat berbuat apa yang dikehendaki-Nya. Semuanya ada dalam kekuasaan-Nya, sehingga tidak ada satu pun dari makhluk-Nya termasuk para nabi dan para malaikat yang dapat memberikan pertolongan kecuali dengan izin-Nya, apalagi patung-patung yang oleh orang-orang kafir dianggap sebagai penolong mereka.\n\nYang dimaksud dengan \"pertolongan\" atau \"syafaat\" dalam ayat ini ialah pertolongan yang diberikan oleh para malaikat, nabi dan orang-orang saleh kepada umat manusia pada hari kiamat untuk mendapatkan keringanan atau kebebasan dari hukuman Allah. Syafaat itu akan terjadi atas izin Allah. Dalam hadis disebutkan :\n\nNabi Saw bersabda, \"¦Kemudian Allah berfirman, \"Para Malaikat memberikan syafaat, para Nabi memberikan syafaat, dan orang-orang mukmin juga memberikan syafaat. (Riwayat Ahmad dan Muslim dari Abu Sa'id al-Khudri)\n\nSifat Allah yang lain yang disebutkan dalam ayat ini ialah: bahwa Allah senantiasa mengetahui apa saja yang terjadi di hadapan dan di belakang makhluk-Nya, sedang mereka tidak mengetahui sesuatu pun dari ilmu Allah, melainkan sekadar apa yang dikehendaki-Nya untuk mereka ketahui. Kursi Allah mencakup langit dan bumi. Allah tidak merasa berat sedikit pun dalam memelihara makhluk-Nya yang berada di langit dan di bumi, dan di semua alam ciptaan-Nya. Allah Mahatinggi lagi Mahabesar.\n\nMereka tidak mengetahui ilmu Allah, kecuali apa yang telah dikehendaki-Nya untuk mereka ketahui. Dengan demikian, yang dapat diketahui oleh manusia hanyalah sekadar apa yang dapat dijangkau oleh pengetahuan yang telah dikaruniakan Allah kepada mereka, dan jumlahnya amat sedikit dibanding dengan ilmu-Nya yang luas. Hal ini ditegaskan Allah dalam firman-Nya:\n\n\"¦ Sedangkan kamu diberi pengetahuan hanya sedikit.\" (al-Isra'/17:85)"
+      }
+    },
+    "surah": {
+      "number": 2,
+      "sequence": 87,
+      "numberOfVerses": 286,
+      "name": {
+        "short": "البقرة",
+        "long": "سورة البقرة",
+        "transliteration": {
+          "en": "Al-Baqara",
+          "id": "Al-Baqarah"
+        },
+        "translation": {
+          "en": "The Cow",
+          "id": "Sapi"
+        }
+      },
+      "revelation": {
+        "arab": "مدينة",
+        "en": "Medinan",
+        "id": "Madaniyyah"
+      },
+      "tafsir": {
+        "id": "Surat Al Baqarah yang 286 ayat itu turun di Madinah yang sebahagian besar diturunkan pada permulaan tahun Hijrah, kecuali ayat 281 diturunkan di Mina pada Hajji wadaa' (hajji Nabi Muhammad s.a.w. yang terakhir). Seluruh ayat dari surat Al Baqarah termasuk golongan Madaniyyah, merupakan surat yang terpanjang di antara surat-surat Al Quran yang di dalamnya terdapat pula ayat yang terpancang (ayat 282). Surat ini dinamai Al Baqarah karena di dalamnya disebutkan kisah penyembelihan sapi betina yang diperintahkan Allah kepada Bani Israil (ayat 67 sampai dengan 74), dimana dijelaskan watak orang Yahudi pada umumnya. Dinamai Fusthaatul-Quran (puncak Al Quran) karena memuat beberapa hukum yang tidak disebutkan dalam surat yang lain. Dinamai juga surat  alif-laam-miim karena surat ini dimulai dengan Alif-laam-miim."
+      },
+      "preBismillah": {
+        "text": {
+          "arab": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+          "transliteration": {
+            "en": "Bismillaahir Rahmaanir Raheem"
+          }
+        },
+        "translation": {
+          "en": "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
+          "id": "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
+        },
+        "audio": {
+          "primary": "https://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/1",
+          "secondary": [
+            "https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3",
+            "https://cdn.islamic.network/quran/audio/64/ar.alafasy/1.mp3"
+          ]
+        }
+      }
+    }
+  }
+}

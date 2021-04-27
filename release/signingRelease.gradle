@@ -1,0 +1,15 @@
+android.signingConfigs {
+    release {
+        def signingPropsFile = rootProject.file('release/signing.properties')
+        def properties = null
+        if (signingPropsFile.exists()) {
+            properties = new Properties()
+            signingPropsFile.withInputStream { properties.load it }
+            storeFile properties?.get('secretKeyFile')?.with(rootProject.&file)
+            storePassword properties?.get('secretStorePassword')
+            keyAlias properties?.get('secretKeyAlias')
+            keyPassword properties?.get('secretKeyPassword')
+        }
+        // NOTE: Do not throw here!, `debug` varians no need signing, but execute here.
+    }
+}

@@ -1,0 +1,62 @@
+import static org.gradle.api.initialization.resolve.RepositoriesMode.FAIL_ON_PROJECT_REPOS
+import static org.gradle.api.initialization.resolve.RulesMode.FAIL_ON_PROJECT_RULES
+
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    def fromCatalog = { String id ->
+        file('gradle/libs.versions.toml').readLines().findAll {
+            it.contains id
+        }.first().split('"')[1]
+    }
+    def pluginVersion = [
+            'agp'               : fromCatalog('agp'),
+            'dagger'            : fromCatalog('dagger'),
+            'dependencyanalysis': fromCatalog('dependencyanalysis'),
+            'dependencyupdates' : fromCatalog('dependencyupdates'),
+            'kotlin'            : fromCatalog('kotlin'),
+            'spotless'          : fromCatalog('spotless'),
+            'navigation'        : fromCatalog('navigation'),
+    ]
+    plugins {
+        id 'com.android.application' version pluginVersion.agp
+        id 'com.android.library' version pluginVersion.agp
+        id 'androidx.navigation.safeargs.kotlin' version pluginVersion.navigation
+        id 'dagger.hilt.android.plugin' version pluginVersion.dagger
+        id 'org.jetbrains.kotlin.android' version pluginVersion.kotlin
+        id 'org.jetbrains.kotlin.jvm' version pluginVersion.kotlin
+        id 'org.jetbrains.kotlin.multiplatform' version pluginVersion.kotlin
+        id 'org.jetbrains.kotlin.plugin.serialization' version pluginVersion.kotlin
+
+        id 'com.autonomousapps.dependency-analysis' version pluginVersion.dependencyanalysis
+        id 'com.diffplug.spotless' version pluginVersion.spotless
+        id 'com.github.ben-manes.versions' version pluginVersion.dependencyupdates
+    }
+    def pluginModules = [
+            'androidx.navigation.safeargs.kotlin': 'androidx.navigation:navigation-safe-args-gradle-plugin:' + pluginVersion.navigation,
+            'com.android.application'            : 'com.android.tools.build:gradle:' + pluginVersion.agp,
+            'com.android.library'                : 'com.android.tools.build:gradle:' + pluginVersion.agp,
+            'dagger.hilt.android.plugin'         : 'com.google.dagger:hilt-android-gradle-plugin:' + pluginVersion.dagger
+    ]
+    resolutionStrategy.eachPlugin { PluginResolveDetails prd ->
+        def targetId = prd.target.id.id
+        if (pluginModules.containsKey(targetId)) prd.useModule pluginModules.get(targetId)
+    }
+}
+enableFeaturePreview('VERSION_CATALOGS')
+enableFeaturePreview('TYPESAFE_PROJECT_ACCESSORS')
+dependencyResolutionManagement {
+    repositoriesMode.set FAIL_ON_PROJECT_REPOS
+    rulesMode.set FAIL_ON_PROJECT_RULES
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+include ':android'
+include ':items'
+include ':itemsAndroid'

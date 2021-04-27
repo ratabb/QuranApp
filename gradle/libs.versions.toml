@@ -1,0 +1,174 @@
+[versions]
+agp = "4.1.3"
+coil = "1.2.0"
+contour = "1.1.0"
+coroutines = "1.4.3"
+dagger = "2.35"
+dependencyanalysis = "0.72.0"
+dependencyupdates = "0.38.0"
+desugar = "1.1.0"
+kotlin = "1.4.32"
+ktlint = "0.40.0"
+leakcanary = "2.7"
+material = "1.3.0"
+okhttp = "4.9.1"
+serialization = "1.2.0"
+spotless = "5.12.4"
+timber = "4.7.1"
+
+arch = "2.1.0"
+activity = "1.3.0-alpha07"
+annotation = "1.2.0-rc01"
+appcompat = "1.3.0-rc01"
+archcore = "2.1.0"
+browser = "1.3.0"
+collection = "1.1.0"
+constraintlayout = "2.1.0-beta01"
+coordinatorlayout = "1.1.0"
+core = "1.5.0-beta03"
+customview = "1.1.0"
+documentfile = "1.0.1"
+drawerlayout = "1.1.1"
+fragment = "1.3.3"
+hilt = "1.0.0-alpha03"
+lifecycle = "2.3.1"
+multidex = "2.0.1"
+navigation = "2.3.5"
+recyclerview = "1.2.0"
+room = "2.3.0"
+transition = "1.3.0"
+vectordrawableanim = "1.1.0"
+
+accompanist = "0.8.1"
+compose = "1.0.0-beta05"
+
+[libraries]
+
+arch-core-common ={ module ="androidx.arch.core:core-common", version.ref = "arch" }
+arch-core-runtime ={ module ="androidx.arch.core:core-runtime", version.ref = "arch" }
+
+activity-activity = { module = "androidx.activity:activity", version.ref = "activity" }
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
+
+annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+browser = { module = "androidx.browser:browser", version.ref = "browser" }
+
+constraintlayout-base = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayout" }
+
+coordinatorlayout = { module = "androidx.coordinatorlayout:coordinatorlayout", version.ref = "coordinatorlayout" }
+
+core-core = { module = "androidx.core:core", version.ref = "core" }
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "core" }
+
+customview = { module = "androidx.customview:customview", version.ref = "customview" }
+documentfile = { module = "androidx.documentfile:documentfile", version.ref = "documentfile" }
+drawerlayout = { module = "androidx.drawerlayout:drawerlayout", version.ref = "drawerlayout" }
+
+fragment-fragment = { module = "androidx.fragment:fragment", version.ref = "fragment" }
+fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
+
+hilt-common-common = "androidx.hilt:hilt-common:1.0.0-beta01"
+hilt-navigation-navigation = "androidx.hilt:hilt-navigation:1.0.0-beta01"
+hilt-lifecycle-viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+hilt-navigation-compose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha01"
+
+lifecycle-common = { module = "androidx.lifecycle:lifecycle-common", version.ref = "lifecycle" }
+lifecycle-livedata-core = { module = "androidx.lifecycle:lifecycle-livedata-core", version.ref = "lifecycle" }
+lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel-compose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha04"
+lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
+lifecycle-viewmodel-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle" }
+
+multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
+
+navigation-common-common = { module = "androidx.navigation:navigation-common", version.ref = "navigation" }
+navigation-common-ktx = { module = "androidx.navigation:navigation-common-ktx", version.ref = "navigation" }
+navigation-compose = "androidx.navigation:navigation-compose:1.0.0-alpha10"
+navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+navigation-runtime-runtime = { module = "androidx.navigation:navigation-runtime", version.ref = "navigation" }
+navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigation" }
+navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+
+paging-compose = "androidx.paging:paging-compose:1.0.0-alpha08"
+
+recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
+
+vectordrawable-animated = { module = "androidx.vectordrawable:vectordrawable-animated", version.ref = "vectordrawableanim" }
+
+coil-coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+coil-base = { module = "io.coil-kt:coil-base", version.ref = "coil" }
+
+contour = { module = "app.cash.contour:contour", version.ref = "contour" }
+
+coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutines-core-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines-core-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "coroutines" }
+
+customactivityoncrash = "cat.ereza:customactivityoncrash:2.3.0"
+
+dagger-dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "dagger" }
+dagger-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "dagger" }
+dagger-hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "dagger" }
+
+desugar = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar" }
+
+material-material = { module = "com.google.android.material:material", version.ref = "material" }
+
+material-compose-themeAdapter = "com.google.android.material:compose-theme-adapter:1.0.0-beta05"
+
+javax-inject = "javax.inject:javax.inject:1"
+
+kotlin-stdlib-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib-common", version.ref = "kotlin" }
+
+leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
+leakcanary-plumber-android = { module = "com.squareup.leakcanary:plumber-android", version.ref = "leakcanary" }
+
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+
+serialization-core-jvm = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core-jvm", version.ref = "serialization" }
+serialization-json-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+serialization-json-jvm = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-jvm", version.ref = "serialization" }
+
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+
+accompanist-coil = { module = "com.google.accompanist:accompanist-coil", version.ref = "accompanist" }
+accompanist-insets = { module = "com.google.accompanist:accompanist-insets", version.ref = "accompanist" }
+accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
+accompanist-pager-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist" }
+accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist" }
+accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
+
+compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose" }
+compose-foundation-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+compose-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "compose" }
+compose-material-material = { module = "androidx.compose.material:material", version.ref = "compose" }
+compose-material-iconscore = { module = "androidx.compose.material:material-icons-core", version.ref = "compose" }
+compose-material-iconsext = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
+compose-runtime-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
+compose-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "compose" }
+compose-ui-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics", version.ref = "compose" }
+compose-ui-text = { module = "androidx.compose.ui:ui-text", version.ref = "compose" }
+compose-ui-unit = { module = "androidx.compose.ui:ui-unit", version.ref = "compose" }
+compose-ui-util = { module = "androidx.compose.ui:ui-util", version.ref = "compose" }
+compose-ui-testjunit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+
+room-common = { module = "androidx.room:room-common", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
+sqlite = "androidx.sqlite:sqlite:2.1.0"
+
+junit = "junit:junit:4.13.2"
+hamcrest = "org.hamcrest:hamcrest-all:1.3"
+robolectric = "org.robolectric:robolectric:4.5.1"
+
+[bundles]
