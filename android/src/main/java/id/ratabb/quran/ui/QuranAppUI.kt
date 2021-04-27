@@ -1,6 +1,5 @@
 package id.ratabb.quran.ui
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -43,7 +42,6 @@ const val WITH_AYAH = "withAyah/"
 const val NUM_SURAH = "numSurah"
 const val ROUTE_SURAH = "surah"
 const val ROUTE_WITH_AYAH = "$WITH_AYAH{$NUM_SURAH}"
-
 // endregion
 
 @Composable
@@ -89,7 +87,7 @@ fun QuranAppBar(
     TopAppBar(
         title = {
             Row {
-                Image(
+                Icon(
                     painter = painterResource(R.drawable.ic_icon_logo),
                     contentDescription = null
                 )
