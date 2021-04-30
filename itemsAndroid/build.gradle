@@ -10,7 +10,9 @@ dependencies {
     api libs.kotlin.stdlib.jdk8
     api libs.room.runtime
     api libs.javax.inject
-
+    api libs.serialization.json.jvm
+    compileOnly libs.compose.runtime.runtime
+    implementation libs.serialization.core.jvm
     implementation libs.coroutines.android
     implementation libs.room.common
     implementation libs.room.ktx

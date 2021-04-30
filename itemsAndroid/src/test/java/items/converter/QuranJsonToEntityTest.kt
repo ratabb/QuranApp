@@ -59,6 +59,6 @@ class QuranJsonToEntityTest {
     }
 
     private fun String.loadStream(): InputStream =
-        QuranJsonToEntityTest::class.java.classLoader.getResourceAsStream(this)
+        QuranJsonToEntityTest::class.java.classLoader?.getResourceAsStream(this)
             ?: throw IllegalStateException("Can't load $this")
 }

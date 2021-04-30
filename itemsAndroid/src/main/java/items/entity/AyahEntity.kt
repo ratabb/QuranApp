@@ -1,8 +1,10 @@
 package items.entity
 
+import androidx.compose.runtime.Immutable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+@Immutable
 @Entity(tableName = "ayah")
 data class AyahEntity(
     @PrimaryKey(autoGenerate = false)

@@ -18,22 +18,6 @@ class SurahTest {
     }
 
     @Test
-    fun `Load quran json from Resources`() {
-        val data = "quran.json".loadStreamAsText()
-        val dataListSurah: DataListSurah = jsonFormat.decodeFromString(data)
-
-        assertThat(dataListSurah, `is`(notNullValue(DataListSurah::class.java)))
-
-        assertThat(dataListSurah.data.size, `is`(equalTo(114)))
-
-        assertThat(dataListSurah.data[0].name?.short, `is`(equalToIgnoringCase("الفاتحة")))
-        assertThat(
-            dataListSurah.data[0].name?.long,
-            `is`(equalToIgnoringCase("سُورَةُ ٱلْفَاتِحَةِ"))
-        )
-    }
-
-    @Test
     fun `Load ayah_2_255 json from Resources`() {
         val data = "ayah_2_255.json".loadStreamAsText()
 
