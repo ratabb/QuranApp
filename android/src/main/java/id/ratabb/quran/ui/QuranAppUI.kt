@@ -26,11 +26,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltNavGraphViewModel
+import androidx.navigation.NavGraph
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.createGraph
 import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import id.ratabb.quran.R
@@ -38,32 +40,31 @@ import id.ratabb.quran.ui.ayah.WithAyahScreen
 import id.ratabb.quran.ui.ayah.WithAyahViewModel
 import id.ratabb.quran.ui.common.FunctionalityNotAvailablePopup
 import id.ratabb.quran.ui.surah.SurahInfoListScreen
+import id.ratabb.quran.ui.surah.SurahInfoViewModel
 
 // region Navigation Route
 const val WITH_AYAH = "withAyah/"
 const val NUM_SURAH = "numSurah"
 const val ROUTE_SURAH = "surah"
-const val ROUTE_WITH_AYAH = "$WITH_AYAH{$NUM_SURAH}"
+const val ROUTE_WITH_AYAH = "$WITH_AYAH{$NUM_SURAH}" // withAyah/{numSurah}
 // endregion
 
 @Composable
 fun QuranAppUI() {
     val appBarColor = MaterialTheme.colors.surface.copy(alpha = 0.87f)
     val navController = rememberNavController()
-    val navGraph = navController.createGraph(startDestination = ROUTE_SURAH) {
-        composable(ROUTE_SURAH) { SurahInfoListScreen(navController, vm = hiltNavGraphViewModel()) }
+    val navGraph: NavGraph = navController.createGraph(startDestination = ROUTE_SURAH) {
+        composable(ROUTE_SURAH) { backStackEntry ->
+            val viewModel: SurahInfoViewModel = hiltNavGraphViewModel(backStackEntry)
+            SurahInfoListScreen(viewModel) { navController.navigate("$WITH_AYAH$it") }
+        }
         composable(
             ROUTE_WITH_AYAH,
-            arguments = listOf(
-                navArgument(NUM_SURAH) {
-                    type = NavType.IntType
-                    defaultValue = 1
-                }
-            )
+            arguments = listOf(navArgument(NUM_SURAH) { type = NavType.IntType })
         ) { backStackEntry ->
-            val numberSurah = backStackEntry.arguments?.getInt(NUM_SURAH) ?: 1
-            val viewModel: WithAyahViewModel = hiltNavGraphViewModel()
-            viewModel.setNumberSurah(numberSurah)
+            val numSurah = backStackEntry.arguments?.getInt(NUM_SURAH) ?: return@composable
+            val viewModel: WithAyahViewModel = hiltNavGraphViewModel(backStackEntry)
+            viewModel.setNumberSurah(numSurah)
             WithAyahScreen(viewModel)
         }
     }
