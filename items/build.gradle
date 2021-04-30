@@ -5,9 +5,9 @@ plugins {
 
 dependencies {
     api libs.kotlin.stdlib.jdk8
-    implementation libs.serialization.json.jvm
     api libs.serialization.core.jvm
     //
+    testImplementation libs.serialization.json.jvm
     testImplementation libs.junit
     testImplementation libs.hamcrest
 }
