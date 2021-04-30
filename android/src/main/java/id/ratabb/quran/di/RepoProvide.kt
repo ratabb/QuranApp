@@ -8,12 +8,12 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import data.QuranRepository
 import data.QuranRepositoryImpl
 
-@Suppress("unused") // <- false flag ;(
+@Suppress("unused") //
 @Module
 @InstallIn(ViewModelComponent::class)
 interface RepoProvide {
 
     @Binds
     @ViewModelScoped
-    fun bindSurahRepo(impl: QuranRepositoryImpl): QuranRepository
+    fun bindQuranRepository(impl: QuranRepositoryImpl): QuranRepository
 }

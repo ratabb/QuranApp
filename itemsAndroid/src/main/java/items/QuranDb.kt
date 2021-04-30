@@ -1,6 +1,8 @@
 package items
 
+import android.content.Context
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
 import items.dao.AyahDao
 import items.dao.SurahDao
@@ -15,4 +17,12 @@ import items.entity.SurahEntity
 abstract class QuranDb : RoomDatabase() {
     abstract fun getAyahDao(): AyahDao
     abstract fun getSurahDao(): SurahDao
+
+    companion object {
+        inline fun build(
+            context: Context,
+            builder: Builder<QuranDb>.() -> Builder<QuranDb>
+        ): QuranDb = Room.databaseBuilder(context, QuranDb::class.java, "quran")
+            .also { builder(it) }.build()
+    }
 }
