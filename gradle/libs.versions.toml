@@ -145,6 +145,8 @@ accompanist-pager-pager = { module = "com.google.accompanist:accompanist-pager",
 accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist" }
 accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
 
+compose-animation-animation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
+compose-animation-core = { module = "androidx.compose.animation:animation-core", version.ref = "compose" }
 compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose" }
 compose-foundation-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "compose" }

@@ -88,6 +88,7 @@ dependencies {
     implementation libs.accompanist.systemuicontroller
     implementation libs.activity.activity
     implementation libs.activity.compose
+    implementation libs.compose.animation.animation
     implementation libs.compose.foundation.foundation
     implementation libs.compose.foundation.layout
     implementation libs.compose.material.iconscore

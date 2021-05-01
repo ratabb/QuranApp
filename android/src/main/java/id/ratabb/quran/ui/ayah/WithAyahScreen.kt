@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import id.ratabb.quran.ui.common.ExpandableContent
 import id.ratabb.quran.ui.common.NumberArabic
 import id.ratabb.quran.ui.common.TextArabic
 import items.entity.AyahEntity
@@ -49,7 +50,7 @@ fun WithAyahContent(
             text = surahWithAyah.surahEntity.textArabicLong!!,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.h4,
-            modifier = Modifier.fillMaxWidth().padding(start = 8.dp, end = 8.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp),
             fontWeight = FontWeight.SemiBold
         )
         Spacer(Modifier.height(8.dp))
@@ -107,22 +108,36 @@ fun AyahEntityItem(ayahEntity: AyahEntity) {
                     }
                 }
             }
-            Divider(color = Color.LightGray, modifier = Modifier.padding(top = 8.dp, bottom = 8.dp))
+            Divider(color = Color.LightGray, modifier = Modifier.padding(vertical = 8.dp))
             // Text transliterasi in English
-            Text(
-                text = ayahEntity.textEnglish!!,
-                textAlign = TextAlign.Justify,
-                style = MaterialTheme.typography.body2,
-                fontWeight = FontWeight.Normal
-            )
-            Divider(color = Color.LightGray, modifier = Modifier.padding(top = 8.dp, bottom = 8.dp))
+            ExpandableContent("Transliterasi", true) {
+                Text(
+                    text = ayahEntity.textEnglish!!,
+                    textAlign = TextAlign.Justify,
+                    style = MaterialTheme.typography.body2,
+                    fontWeight = FontWeight.Normal
+                )
+            }
+            Divider(color = Color.LightGray, modifier = Modifier.padding(vertical = 8.dp))
             // Text translation in Bahasa Indonesia
-            Text(
-                text = ayahEntity.transIndo!!,
-                textAlign = TextAlign.Justify,
-                style = MaterialTheme.typography.body2,
-                fontWeight = FontWeight.Normal
-            )
+            ExpandableContent("Translation") {
+                Text(
+                    text = ayahEntity.transIndo!!,
+                    textAlign = TextAlign.Justify,
+                    style = MaterialTheme.typography.body2,
+                    fontWeight = FontWeight.Normal
+                )
+            }
+            Divider(color = Color.LightGray, modifier = Modifier.padding(vertical = 8.dp))
+            // Text tafsir in Bahasa Indonesia
+            ExpandableContent("Tafsir") {
+                Text(
+                    text = ayahEntity.tafsirShort!!,
+                    textAlign = TextAlign.Justify,
+                    style = MaterialTheme.typography.body2,
+                    fontWeight = FontWeight.Normal
+                )
+            }
         }
     }
 }
