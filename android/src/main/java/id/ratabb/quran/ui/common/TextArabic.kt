@@ -10,7 +10,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -19,13 +18,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
-import id.ratabb.quran.R
+import id.ratabb.quran.ui.theme.UthmanTahaNaskh
 
-@Suppress("SpellCheckingInspection")
-val UthmanTahaNaskh = FontFamily(
-    Font(R.font.uthmantn1_ver07, FontWeight.Normal),
-    Font(R.font.uthmantn1b_ver07, FontWeight.Bold)
-)
 @Composable
 fun TextArabic(
     text: String,

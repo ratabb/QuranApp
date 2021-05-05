@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
+import id.ratabb.quran.ui.theme.UthmanTahaNaskh
 import java.text.NumberFormat
 import java.util.Locale
 
