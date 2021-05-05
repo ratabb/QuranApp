@@ -3,6 +3,8 @@
     <string name="app_name" formatted="false" translatable="false">Quran App</string>
 
     <string name="search">Search</string>
+    <string name="goTo">Go to…</string>
+    <string name="input_num_ayah_in_range" formatted="true">Input number ayah in range %s</string>
 
 
 </resources>

@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -37,12 +38,15 @@ import items.entity.SurahWithAyah
 fun WithAyahScreen(vm: WithAyahViewModel) {
     val surahWithAyah = vm.withAyahData.observeAsState().value
     val basmallah = vm.basmalah.observeAsState().value
-    if (surahWithAyah != null && basmallah != null) WithAyahContent(surahWithAyah, basmallah)
+    val indexAyah = vm.indexAyahData.observeAsState(0).value
+    if (surahWithAyah != null && basmallah != null)
+        WithAyahContent(surahWithAyah, indexAyah, basmallah)
 }
 
 @Composable
 fun WithAyahContent(
     surahWithAyah: SurahWithAyah,
+    indexAyah: Int,
     basmallah: AyahEntity
 ) {
     Column {
@@ -61,13 +65,17 @@ fun WithAyahContent(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp),
             fontWeight = FontWeight.SemiBold
         )
-        AyahEntityGrid(surahWithAyah.ayahEntity)
+        AyahEntityGrid(surahWithAyah.ayahEntity, indexAyah)
     }
 }
 
 @Composable
-fun AyahEntityGrid(data: List<AyahEntity>) {
-    LazyColumn(Modifier.padding(12.dp), contentPadding = PaddingValues(8.dp)) {
+fun AyahEntityGrid(data: List<AyahEntity>, indexAyah: Int) {
+    LazyColumn(
+        state = rememberLazyListState(indexAyah),
+        modifier = Modifier.padding(12.dp),
+        contentPadding = PaddingValues(8.dp)
+    ) {
         items(data) { ayahEntity -> AyahEntityItem(ayahEntity) }
     }
 }
@@ -77,7 +85,7 @@ fun AyahEntityItem(ayahEntity: AyahEntity) {
     Card(
         modifier = Modifier
             .padding(start = 4.dp, end = 4.dp, top = 4.dp, bottom = 8.dp)
-            .clip(MaterialTheme.shapes.large),
+            .clip(MaterialTheme.shapes.medium),
         elevation = 8.dp,
         border = BorderStroke(1.dp, MaterialTheme.colors.primary)
     ) {

@@ -21,6 +21,9 @@ class WithAyahViewModel @Inject constructor(
     private val _withAyahData = MutableLiveData<SurahWithAyah>()
     val withAyahData: LiveData<SurahWithAyah> get() = _withAyahData
 
+    private val _indexAyahData = MutableLiveData(1)
+    val indexAyahData: LiveData<Int> get() = _indexAyahData
+
     private val _basmalah = MutableLiveData<AyahEntity>()
     val basmalah: LiveData<AyahEntity> get() = _basmalah
 
@@ -32,12 +35,13 @@ class WithAyahViewModel @Inject constructor(
         }
     }
 
-    fun setNumberSurah(number: Int) {
+    fun setSurahAyah(numSurah: Int, indexAyah: Int) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 _withAyahData.postValue(
-                    quranRepository.getSurahWithAyah(number)
+                    quranRepository.getSurahWithAyah(numSurah)
                 )
+                _indexAyahData.postValue(indexAyah)
             }
         }
     }

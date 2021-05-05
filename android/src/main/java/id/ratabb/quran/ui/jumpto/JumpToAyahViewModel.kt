@@ -1,4 +1,4 @@
-package id.ratabb.quran.ui.surah
+package id.ratabb.quran.ui.jumpto
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,16 +12,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SurahInfoViewModel @Inject constructor(
+class JumpToAyahViewModel @Inject constructor(
     private val quranRepository: QuranRepository
 ) : ViewModel() {
-    private val _surahData = MutableLiveData<List<SurahEntity>>()
-    val surahData: LiveData<List<SurahEntity>>
-        get() = _surahData
+
+    private val _data = MutableLiveData<List<SurahEntity>>()
+    val data: LiveData<List<SurahEntity>> get() = _data
 
     init {
         viewModelScope.launch(IO) {
-            _surahData.postValue(quranRepository.getAllSurah())
+            _data.postValue(quranRepository.getAllSurah())
         }
     }
 }

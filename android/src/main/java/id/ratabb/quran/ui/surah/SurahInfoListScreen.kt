@@ -30,7 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import id.ratabb.quran.ui.common.NumberArabic
 import id.ratabb.quran.ui.common.TextArabic
-import items.entity.SurahInfo
+import items.entity.SurahEntity
 
 @Composable
 fun SurahInfoListScreen(vm: SurahInfoViewModel, setNumSurah: (Int) -> Unit) {
@@ -40,8 +40,8 @@ fun SurahInfoListScreen(vm: SurahInfoViewModel, setNumSurah: (Int) -> Unit) {
 
 @Composable
 fun SurahInfoGrid(
-    data: List<SurahInfo>,
-    onSurahInfoClick: (SurahInfo) -> Unit
+    data: List<SurahEntity>,
+    onSurahInfoClick: (SurahEntity) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier.padding(horizontal = 12.dp),
@@ -63,21 +63,21 @@ fun SurahInfoGrid(
 }
 
 @Composable
-fun SurahInfoItem(surah: SurahInfo, modifier: Modifier = Modifier) {
+fun SurahInfoItem(surah: SurahEntity, modifier: Modifier = Modifier) {
     Row(modifier = modifier) {
         Column(
             modifier = Modifier.fillMaxWidth().weight(1F)
         ) {
             TextArabic(
-                text = surah.textArabic,
+                text = surah.textArabic!!,
                 style = MaterialTheme.typography.h4,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.SemiBold
             )
             Spacer(Modifier.height(4.dp))
-            Text(surah.textEnglish)
+            Text(surah.textEnglish!!)
             Divider(Modifier.height(1.dp), Color.LightGray)
-            Text(surah.textIndo)
+            Text(surah.textIndo!!)
             Spacer(Modifier.height(2.dp))
         }
         Surface(
