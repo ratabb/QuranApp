@@ -30,7 +30,6 @@ fun Ayah.toEntity(numberSurah: Int): AyahEntity = AyahEntity(
     sajda = meta!!.sajda.run { recommended || obligatory },
     textArabic = text!!.arab,
     textEnglish = text!!.transliteration.en,
-    textIndo = text!!.transliteration.id,
     transEnglish = translation?.en,
     transIndo = translation?.id,
     audioUrl = audio?.primary,

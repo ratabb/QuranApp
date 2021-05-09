@@ -2,7 +2,6 @@ package items.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
@@ -26,9 +25,9 @@ abstract class SurahDao {
     @Query("SELECT * FROM surah")
     abstract fun getAllSurahWithAyah(): List<SurahWithAyah>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert
     abstract suspend fun insertSurah(surahEntity: SurahEntity)
 
-    @Update(onConflict = OnConflictStrategy.IGNORE)
+    @Update
     abstract suspend fun updateSurah(surahEntity: SurahEntity)
 }

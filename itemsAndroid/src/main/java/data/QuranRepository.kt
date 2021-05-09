@@ -1,6 +1,7 @@
 package data
 
 import items.entity.AyahEntity
+import items.entity.AyahFtsView
 import items.entity.SurahEntity
 import items.entity.SurahWithAyah
 
@@ -15,4 +16,5 @@ interface QuranRepository {
     suspend fun getAyah(numberInQuran: Int): AyahEntity
     suspend fun insertAyah(ayahEntity: List<AyahEntity>)
     suspend fun updateAyah(ayahEntity: AyahEntity)
+    suspend fun searchAyah(query: String): List<AyahFtsView>
 }

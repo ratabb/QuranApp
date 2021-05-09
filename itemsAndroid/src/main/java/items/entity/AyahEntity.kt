@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Immutable
 @Entity(tableName = "ayah")
 data class AyahEntity(
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey
     val numberInQuran: Int,
     val numberInSurah: Int,
     val numberSurah: Int,
@@ -15,7 +15,6 @@ data class AyahEntity(
     val sajda: Boolean,
     val textArabic: String,
     val textEnglish: String? = null,
-    val textIndo: String? = null,
     val transIndo: String? = null,
     val transEnglish: String? = null,
     val audioUrl: String? = null,

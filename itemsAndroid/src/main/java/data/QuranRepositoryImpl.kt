@@ -3,6 +3,7 @@ package data
 import items.dao.AyahDao
 import items.dao.SurahDao
 import items.entity.AyahEntity
+import items.entity.AyahFtsView
 import items.entity.SurahEntity
 import items.entity.SurahWithAyah
 import javax.inject.Inject
@@ -42,4 +43,7 @@ class QuranRepositoryImpl @Inject constructor(
     override suspend fun updateAyah(ayahEntity: AyahEntity) {
         ayahDao.updateAyah(ayahEntity)
     }
+
+    override suspend fun searchAyah(query: String): List<AyahFtsView> =
+        ayahDao.searchAyah(query)
 }

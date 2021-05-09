@@ -7,10 +7,11 @@ import androidx.room.RoomDatabase
 import items.dao.AyahDao
 import items.dao.SurahDao
 import items.entity.AyahEntity
+import items.entity.AyahFts
 import items.entity.SurahEntity
 
 @Database(
-    entities = [AyahEntity::class, SurahEntity::class],
+    entities = [AyahEntity::class, AyahFts::class, SurahEntity::class],
     version = 1,
     exportSchema = false
 )
