@@ -41,6 +41,8 @@ import id.ratabb.quran.ui.ayah.WithAyahScreen
 import id.ratabb.quran.ui.ayah.WithAyahViewModel
 import id.ratabb.quran.ui.common.FunctionalityNotAvailablePopup
 import id.ratabb.quran.ui.jumpto.JumpToAyah
+import id.ratabb.quran.ui.search.SearchScreen
+import id.ratabb.quran.ui.search.SearchViewModel
 import id.ratabb.quran.ui.surah.SurahInfoListScreen
 import id.ratabb.quran.ui.surah.SurahInfoViewModel
 
@@ -48,6 +50,7 @@ import id.ratabb.quran.ui.surah.SurahInfoViewModel
 fun QuranAppUI() {
     val appBarColor = MaterialTheme.colors.surface.copy(alpha = 0.87f)
     val navController = rememberNavController()
+
     val navGraph: NavGraph = navController.createGraph(startDestination = NavSurah.route) {
         composable(route = NavSurah.route) { backStackEntry ->
             val viewModel: SurahInfoViewModel = hiltNavGraphViewModel(backStackEntry)
@@ -63,6 +66,19 @@ fun QuranAppUI() {
             viewModel.setSurahAyah(numSurah, indexAyah)
             WithAyahScreen(viewModel)
         }
+        composable(
+            route = NavSearch.route
+        ) { backStackEntry ->
+            val viewModel: SearchViewModel = hiltNavGraphViewModel(backStackEntry)
+            SearchScreen(viewModel) { entity ->
+                navController.navigate(
+                    route = NavAyah.ayahWith(
+                        numSurah = entity.numberSurah,
+                        indexAyah = entity.numberInSurah - 1
+                    )
+                )
+            }
+        }
     }
     var isShowUnimplement by remember { mutableStateOf(false) }
     var isJumpToAyah by remember { mutableStateOf(false) }
@@ -73,7 +89,7 @@ fun QuranAppUI() {
             QuranAppBar(
                 backgroundColor = appBarColor,
                 modifier = Modifier.statusBarsPadding().fillMaxWidth(),
-                onSearchClick = { isShowUnimplement = true },
+                onSearchClick = { navController.navigate(NavSearch.route) },
                 onJumpToClick = { isJumpToAyah = true },
                 onMoreClick = { isShowUnimplement = true }
             )

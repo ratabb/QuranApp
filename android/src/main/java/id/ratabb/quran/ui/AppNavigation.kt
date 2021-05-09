@@ -33,3 +33,5 @@ object NavAyah : AppNavigation("ayah/{$argNumSurah}/{$argIndexAyah}") {
     fun ayahWith(numSurah: Int, indexAyah: Int = defaultIndexAyah): String =
         "ayah/$numSurah/$indexAyah"
 }
+
+object NavSearch : AppNavigation("search")
