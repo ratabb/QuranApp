@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SurahInfoViewModel @Inject constructor(
+class SurahViewModel @Inject constructor(
     private val quranRepository: QuranRepository
 ) : ViewModel() {
     private val _surahData = MutableLiveData<List<SurahEntity>>()

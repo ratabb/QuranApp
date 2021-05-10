@@ -36,27 +36,27 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltNavGraphViewModel
+import androidx.navigation.compose.navigate
 import id.ratabb.quran.R
+import id.ratabb.quran.ui.AppNavigation
+import id.ratabb.quran.ui.LocalNavController
 import id.ratabb.quran.ui.common.SimpleTextButton
 import items.entity.SurahEntity
 
 @Composable
-fun JumpToAyah(
-    isShow: Boolean,
-    onDismiss: () -> Unit,
-    onConfirm: (Int, Int) -> Unit
-) {
+fun JumpToAyahPopup(isShow: Boolean, onDismiss: () -> Unit) {
     val vm: JumpToAyahViewModel = hiltNavGraphViewModel()
+    val navController = LocalNavController.current
     val data: List<SurahEntity> = vm.data.observeAsState(emptyList()).value
 
     var indexSelected: Int by remember { mutableStateOf(0) }
     var numAyahField: TextFieldValue by remember { mutableStateOf(TextFieldValue()) }
 
     val doConfirm: () -> Unit = {
-        onConfirm(
-            data[indexSelected].number,
-            numAyahField.runCatching { text.toInt() }.getOrElse { 1 } //
-        )
+        onDismiss()
+        val locNumSurah = data[indexSelected].number
+        val locNumAyah = numAyahField.runCatching { text.toInt() }.getOrElse { 1 } //
+        navController.navigate(AppNavigation.ayah(locNumSurah, locNumAyah - 1))
     }
 
     if (isShow) {

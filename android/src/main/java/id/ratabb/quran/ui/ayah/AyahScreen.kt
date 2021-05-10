@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltNavGraphViewModel
 import id.ratabb.quran.ui.common.ExpandableContent
 import id.ratabb.quran.ui.common.NumberArabic
 import id.ratabb.quran.ui.common.TextArabic
@@ -35,16 +36,18 @@ import items.entity.AyahEntity
 import items.entity.SurahWithAyah
 
 @Composable
-fun WithAyahScreen(vm: WithAyahViewModel) {
+fun AyahScreen(args: AyahScreenArgs) {
+    val vm: AyahViewModel = hiltNavGraphViewModel()
+    vm.setSurahAyah(args.numSurah, args.indexAyah)
     val surahWithAyah = vm.withAyahData.observeAsState().value
     val basmallah = vm.basmalah.observeAsState().value
     val indexAyah = vm.indexAyahData.observeAsState(0).value
     if (surahWithAyah != null && basmallah != null)
-        WithAyahContent(surahWithAyah, indexAyah, basmallah)
+        AyahContent(surahWithAyah, indexAyah, basmallah)
 }
 
 @Composable
-fun WithAyahContent(
+fun AyahContent(
     surahWithAyah: SurahWithAyah,
     indexAyah: Int,
     basmallah: AyahEntity

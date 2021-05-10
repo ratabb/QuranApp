@@ -1,37 +1,39 @@
 package id.ratabb.quran.ui
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavType
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NamedNavArgument
-import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.composable
+import id.ratabb.quran.ui.ayah.AyahNavCommand
+import id.ratabb.quran.ui.search.SearchNavCommand
+import id.ratabb.quran.ui.surah.SurahNavCommand
 
-sealed class AppNavigation(val route: String)
-
-object NavSurah : AppNavigation("surah")
-
-private const val defaultIndexAyah = 0
-private const val argNumSurah = "numSurah"
-private const val argIndexAyah = "indexAyah"
-
-object NavAyah : AppNavigation("ayah/{$argNumSurah}/{$argIndexAyah}") {
-
-    val arguments: List<NamedNavArgument> = listOf(
-        navArgument(argNumSurah) { type = NavType.IntType },
-        navArgument(argIndexAyah) {
-            type = NavType.IntType
-            defaultValue = defaultIndexAyah
-        }
-    )
-
-    fun getNumSurah(entry: NavBackStackEntry): Int =
-        entry.arguments?.getInt(argNumSurah) ?: throw IllegalStateException("Can't get numSurah")
-
-    fun getIndexAyah(entry: NavBackStackEntry): Int =
-        entry.arguments?.getInt(argIndexAyah) ?: defaultIndexAyah
-
-    @JvmOverloads
-    fun ayahWith(numSurah: Int, indexAyah: Int = defaultIndexAyah): String =
-        "ayah/$numSurah/$indexAyah"
+val LocalNavController = staticCompositionLocalOf<NavController> {
+    error("No local navigator found!")
 }
 
-object NavSearch : AppNavigation("search")
+interface NavCommand {
+    val arguments: List<NamedNavArgument> get() = emptyList()
+    val route: String
+}
+
+fun NavGraphBuilder.navigationNode(
+    command: NavCommand,
+    content: @Composable (NavBackStackEntry) -> Unit
+) {
+    composable(
+        route = command.route,
+        arguments = command.arguments,
+        content = content
+    )
+}
+
+object AppNavigation {
+    fun root() = surah()
+    fun surah() = SurahNavCommand.route
+    fun ayah(numSurah: Int, indexAyah: Int) = AyahNavCommand.destination(numSurah, indexAyah)
+    fun search() = SearchNavCommand.route
+}

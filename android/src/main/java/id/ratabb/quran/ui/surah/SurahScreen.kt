@@ -28,21 +28,29 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltNavGraphViewModel
+import androidx.navigation.compose.navigate
+import id.ratabb.quran.ui.AppNavigation
+import id.ratabb.quran.ui.LocalNavController
 import id.ratabb.quran.ui.common.NumberArabic
 import id.ratabb.quran.ui.common.TextArabic
 import id.ratabb.quran.ui.theme.DiwaniBent
 import items.entity.SurahEntity
 
 @Composable
-fun SurahInfoListScreen(vm: SurahInfoViewModel, setNumSurah: (Int) -> Unit) {
+fun SurahScreen() {
+    val vm: SurahViewModel = hiltNavGraphViewModel()
+    val navController = LocalNavController.current
     val state = vm.surahData.observeAsState(emptyList())
-    SurahInfoGrid(state.value) { entity -> setNumSurah(entity.number) }
+    SurahInfoGrid(state.value) { entity ->
+        navController.navigate(AppNavigation.ayah(numSurah = entity.number, indexAyah = 0))
+    }
 }
 
 @Composable
 fun SurahInfoGrid(
     data: List<SurahEntity>,
-    onSurahClick: (SurahEntity) -> Unit
+    onItemClick: (SurahEntity) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier.padding(horizontal = 12.dp),
@@ -51,21 +59,20 @@ fun SurahInfoGrid(
         items(data) { entity ->
             Card(
                 modifier = Modifier
-                    .padding(4.dp).padding(bottom = 8.dp)
+                    .padding(4.dp)
                     .clip(MaterialTheme.shapes.medium)
-                    .clickable { onSurahClick(entity) },
+                    .clickable { onItemClick(entity) },
                 elevation = 8.dp,
-                border = BorderStroke(1.dp, MaterialTheme.colors.primary)
-            ) {
-                SurahInfoItem(entity, Modifier.fillMaxWidth().padding(8.dp))
-            }
+                border = BorderStroke(1.dp, MaterialTheme.colors.primary),
+                content = { SurahInfoItem(entity) }
+            )
         }
     }
 }
 
 @Composable
-fun SurahInfoItem(surah: SurahEntity, modifier: Modifier = Modifier) {
-    Row(modifier = modifier) {
+fun SurahInfoItem(surah: SurahEntity) {
+    Row(modifier = Modifier.fillMaxWidth().padding(8.dp)) {
         Column(
             modifier = Modifier.fillMaxWidth().weight(1F)
         ) {
@@ -89,8 +96,7 @@ fun SurahInfoItem(surah: SurahEntity, modifier: Modifier = Modifier) {
         Surface(
             modifier = Modifier.size(48.dp),
             shape = MaterialTheme.shapes.medium,
-            elevation = 4.dp,
-            color = MaterialTheme.colors.primary.copy(alpha = 0.35F)
+            color = MaterialTheme.colors.primary
         ) {
             Box(
                 modifier = Modifier.size(48.dp),

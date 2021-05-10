@@ -27,22 +27,28 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltNavGraphViewModel
+import androidx.navigation.compose.navigate
 import id.ratabb.quran.R
+import id.ratabb.quran.ui.AppNavigation
+import id.ratabb.quran.ui.LocalNavController
 import id.ratabb.quran.ui.common.SearchTextField
 import items.entity.AyahFtsView
 
 @Composable
-fun SearchScreen(vm: SearchViewModel, onAyahEntityClick: (AyahFtsView) -> Unit) {
+fun SearchScreen() {
+    val vm: SearchViewModel = hiltNavGraphViewModel()
+    val navController = LocalNavController.current
+    val onItemClick: (AyahFtsView) -> Unit = {
+        navController.navigate(AppNavigation.ayah(it.numberSurah, it.numberInSurah - 1))
+    }
     val state = vm.ayahEntities.observeAsState(emptyList())
     val names = vm.surahName.observeAsState(emptyList())
     var searchQuery by remember { mutableStateOf(TextFieldValue()) }
     Column {
         SearchTextField(
             value = searchQuery,
-            onValueChange = {
-                searchQuery = it
-                vm.search(searchQuery.text)
-            },
+            onValueChange = { searchQuery = it },
             hint = stringResource(R.string.search),
             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
@@ -53,17 +59,17 @@ fun SearchScreen(vm: SearchViewModel, onAyahEntityClick: (AyahFtsView) -> Unit) 
             modifier = Modifier.padding(all = 8.dp),
             contentPadding = PaddingValues(8.dp)
         ) {
-            items(state.value) { entity ->
+            items(state.value, AyahFtsView::hashCode) {
                 Card(
                     modifier = Modifier
-                        .padding(4.dp).padding(bottom = 8.dp)
+                        .padding(4.dp)
                         .clip(MaterialTheme.shapes.medium)
-                        .clickable { onAyahEntityClick(entity) },
+                        .clickable { onItemClick(it) },
                     elevation = 8.dp,
                     border = BorderStroke(1.dp, MaterialTheme.colors.primary)
                 ) {
                     AyahEntityItem(
-                        entity,
+                        it,
                         names.value,
                         Modifier.fillParentMaxWidth()
                     )
