@@ -22,7 +22,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
@@ -88,7 +87,7 @@ fun AyahEntityItem(
     Column(modifier = modifier.padding(8.dp)) {
         val numberSurah = ftsView.numberSurah
         Text(text = "QS $numberSurah:${ftsView.numberInSurah} | ${nameList[numberSurah - 1]}")
-        Divider(color = Color.LightGray, modifier = Modifier.padding(vertical = 8.dp))
+        Divider()
         Text(ftsView.transIndo) // TODO: spanstyle?
     }
 }

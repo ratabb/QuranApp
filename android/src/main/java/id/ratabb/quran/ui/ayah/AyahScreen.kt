@@ -24,7 +24,6 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -119,7 +118,7 @@ fun AyahEntityItem(ayahEntity: AyahEntity) {
                     }
                 }
             }
-            Divider(color = Color.LightGray, modifier = Modifier.padding(vertical = 8.dp))
+            Divider()
             // Text transliterasi in English
             ExpandableContent("Transliterasi", true) {
                 Text(
@@ -129,7 +128,7 @@ fun AyahEntityItem(ayahEntity: AyahEntity) {
                     fontWeight = FontWeight.Normal
                 )
             }
-            Divider(color = Color.LightGray, modifier = Modifier.padding(vertical = 8.dp))
+            Divider()
             // Text translation in Bahasa Indonesia
             ExpandableContent("Translation") {
                 Text(
@@ -139,7 +138,7 @@ fun AyahEntityItem(ayahEntity: AyahEntity) {
                     fontWeight = FontWeight.Normal
                 )
             }
-            Divider(color = Color.LightGray, modifier = Modifier.padding(vertical = 8.dp))
+            Divider()
             // Text tafsir in Bahasa Indonesia
             ExpandableContent("Tafsir") {
                 Text(
