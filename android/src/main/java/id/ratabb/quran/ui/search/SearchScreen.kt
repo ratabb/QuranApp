@@ -68,8 +68,11 @@ fun SearchScreen() {
                     border = BorderStroke(1.dp, MaterialTheme.colors.primary)
                 ) {
                     AyahEntityItem(
-                        it,
-                        names.value,
+                        stringResource(
+                            R.string.title_item_search_fmt,
+                            names.value[it.numberSurah - 1], it.numberSurah, it.numberInSurah
+                        ),
+                        it.transIndo,
                         Modifier.fillParentMaxWidth()
                     )
                 }
@@ -79,15 +82,10 @@ fun SearchScreen() {
 }
 
 @Composable
-fun AyahEntityItem(
-    ftsView: AyahFtsView,
-    nameList: List<String>,
-    modifier: Modifier = Modifier
-) {
-    Column(modifier = modifier.padding(8.dp)) {
-        val numberSurah = ftsView.numberSurah
-        Text(text = "QS $numberSurah:${ftsView.numberInSurah} | ${nameList[numberSurah - 1]}")
+fun AyahEntityItem(title: String, content: String, modifier: Modifier = Modifier) {
+    Column(modifier = modifier.then(Modifier.padding(8.dp))) {
+        Text(title)
         Divider()
-        Text(ftsView.transIndo) // TODO: spanstyle?
+        Text(content) // TODO: spanstyle?
     }
 }

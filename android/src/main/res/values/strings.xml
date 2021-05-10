@@ -4,7 +4,7 @@
 
     <string name="search">Search</string>
     <string name="goTo">Go to…</string>
-    <string name="input_num_ayah_in_range" formatted="true">Input number ayah in range %s</string>
+    <string name="input_num_ayah_in_range" formatted="true">Input number ayah in range %1$s</string>
 
-
+    <string name="title_item_search_fmt" formatted="false">Surah %1$s Ayah %3$d [QS %2$d:%3$d]</string>
 </resources>
