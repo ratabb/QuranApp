@@ -23,8 +23,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltNavGraphViewModel
 import androidx.navigation.compose.navigate
@@ -86,6 +89,22 @@ fun AyahEntityItem(title: String, content: String, modifier: Modifier = Modifier
     Column(modifier = modifier.then(Modifier.padding(8.dp))) {
         Text(title)
         Divider()
-        Text(content) // TODO: spanstyle?
+        Text(
+            buildAnnotatedString {
+                // `content` from sql query "snippet(fts, '[',']', '...')"
+                // "...begin some text [query] other text ([query]) end..."
+                val regex = "(?<=\\[)[^\\[\\]]+(?=])".toRegex()
+                append(content.replace("[\\[\\]]".toRegex(), "\u0000")) // `\u0000`=unprintable char
+                regex.findAll(content).map(MatchResult::range).forEach {
+                    addStyle(
+                        SpanStyle(
+                            color = MaterialTheme.colors.primary,
+                            textDecoration = TextDecoration.Underline
+                        ),
+                        it.first, it.last + 1
+                    )
+                }
+            }
+        )
     }
 }
