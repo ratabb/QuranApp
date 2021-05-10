@@ -78,7 +78,7 @@ fun AyahEntityGrid(data: List<AyahEntity>, indexAyah: Int) {
         modifier = Modifier.padding(12.dp),
         contentPadding = PaddingValues(8.dp)
     ) {
-        items(data) { ayahEntity -> AyahEntityItem(ayahEntity) }
+        items(data, AyahEntity::hashCode) { AyahEntityItem(it) }
     }
 }
 

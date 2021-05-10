@@ -55,15 +55,15 @@ fun SurahInfoGrid(
         modifier = Modifier.padding(horizontal = 12.dp),
         contentPadding = PaddingValues(8.dp)
     ) {
-        items(data) { entity ->
+        items(data, SurahEntity::hashCode) {
             Card(
                 modifier = Modifier
                     .padding(4.dp)
                     .clip(MaterialTheme.shapes.medium)
-                    .clickable { onItemClick(entity) },
+                    .clickable { onItemClick(it) },
                 elevation = 8.dp,
                 border = BorderStroke(1.dp, MaterialTheme.colors.primary),
-                content = { SurahInfoItem(entity) }
+                content = { SurahInfoItem(it) }
             )
         }
     }
