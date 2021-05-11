@@ -17,7 +17,7 @@ android {
         versionCode 1
         versionName '1.0.0'
         dependenciesInfo.includeInApk = false
-        resConfigs 'en','id', 'xxhdpi'
+        resConfigs 'en', 'id', 'xxhdpi'
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
     }
@@ -35,7 +35,7 @@ android {
         xmlReport false
         textReport true
         textOutput 'stdout'
-        disable 'ObsoleteLintCustomCheck'
+        disable 'ObsoleteLintCustomCheck', 'NullSafeMutableLiveData' //
     }
     applicationVariants.all { variant ->
         if (variant.name ==~ /release/) {
@@ -81,7 +81,7 @@ android {
 dependencies {
     implementation projects.itemsAndroid
     coreLibraryDesugaring libs.desugar
-    add("kotlinCompilerPluginClasspath", libs.compose.compiler){
+    add("kotlinCompilerPluginClasspath", libs.compose.compiler) {
         because("Using jetpack-compose at AS 4.1")
     }
     implementation libs.accompanist.insets
@@ -105,6 +105,9 @@ dependencies {
     implementation libs.coroutines.android
     implementation libs.coroutines.core.jvm
     implementation libs.customactivityoncrash
+    implementation libs.datastore.core
+    implementation libs.datastore.pref.core
+    implementation libs.datastore.pref.pref
     implementation libs.dagger.dagger
     implementation libs.dagger.hilt.android
     implementation libs.dagger.hilt.core
@@ -116,6 +119,7 @@ dependencies {
     implementation libs.kotlin.stdlib.stdlib
     implementation libs.leakcanary.plumber.android
     implementation libs.lifecycle.livedata.core
+    implementation libs.lifecycle.livedata.ktx
     implementation libs.lifecycle.viewmodel.compose
     implementation libs.lifecycle.viewmodel.ktx
     implementation libs.lifecycle.viewmodel.savedstate

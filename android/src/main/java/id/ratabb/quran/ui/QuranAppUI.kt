@@ -19,11 +19,12 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.statusBarsPadding
 import id.ratabb.quran.ui.ayah.AyahNavCommand
 import id.ratabb.quran.ui.ayah.AyahScreen
-import id.ratabb.quran.ui.common.FunctionalityNotAvailablePopup
 import id.ratabb.quran.ui.common.QuranAppBar
 import id.ratabb.quran.ui.jumpto.JumpToAyahPopup
 import id.ratabb.quran.ui.search.SearchNavCommand
 import id.ratabb.quran.ui.search.SearchScreen
+import id.ratabb.quran.ui.setting.SettingNavCommand
+import id.ratabb.quran.ui.setting.SettingScreen
 import id.ratabb.quran.ui.surah.SurahNavCommand
 import id.ratabb.quran.ui.surah.SurahScreen
 
@@ -34,10 +35,9 @@ fun QuranAppUI() {
         navigationNode(SurahNavCommand) { SurahScreen() }
         navigationNode(AyahNavCommand) { AyahScreen(AyahNavCommand.parseArgs(it)) }
         navigationNode(SearchNavCommand) { SearchScreen() }
+        navigationNode(SettingNavCommand) { SettingScreen() }
     }
-    var isShowUnimplement by remember { mutableStateOf(false) }
     var isJumpToAyah by remember { mutableStateOf(false) }
-
     ProvideWindowInsets {
         CompositionLocalProvider(LocalNavController provides navController) {
             Scaffold(
@@ -47,13 +47,12 @@ fun QuranAppUI() {
                         modifier = Modifier.statusBarsPadding().fillMaxWidth(),
                         onSearchClick = { navController.navigate(AppNavigation.search()) },
                         onJumpToClick = { isJumpToAyah = true },
-                        onMoreClick = { isShowUnimplement = true }
+                        onMoreClick = { navController.navigate(AppNavigation.setting()) }
                     )
                 },
                 backgroundColor = MaterialTheme.colors.background,
                 content = { NavHost(navController, navGraph) }
             )
-            FunctionalityNotAvailablePopup(isShowUnimplement) { isShowUnimplement = false }
             JumpToAyahPopup(isJumpToAyah) { isJumpToAyah = false }
         }
     }

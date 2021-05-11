@@ -9,6 +9,7 @@ import androidx.navigation.compose.NamedNavArgument
 import androidx.navigation.compose.composable
 import id.ratabb.quran.ui.ayah.AyahNavCommand
 import id.ratabb.quran.ui.search.SearchNavCommand
+import id.ratabb.quran.ui.setting.SettingNavCommand
 import id.ratabb.quran.ui.surah.SurahNavCommand
 
 val LocalNavController = staticCompositionLocalOf<NavController> {
@@ -36,4 +37,5 @@ object AppNavigation {
     fun surah() = SurahNavCommand.route
     fun ayah(numSurah: Int, indexAyah: Int) = AyahNavCommand.destination(numSurah, indexAyah)
     fun search() = SearchNavCommand.route
+    fun setting() = SettingNavCommand.route
 }
