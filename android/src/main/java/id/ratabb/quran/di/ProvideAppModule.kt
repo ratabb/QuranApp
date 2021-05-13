@@ -12,6 +12,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import id.ratabb.quran.pref.DayNightPref
 import id.ratabb.quran.pref.DayNightPrefImpl
+import id.ratabb.quran.pref.SearchHistoryPref
+import id.ratabb.quran.pref.SearchHistoryPrefImpl
 import items.QuranDb
 import items.dao.AyahDao
 import items.dao.SurahDao
@@ -44,4 +46,8 @@ object ProvideAppModule {
     @Provides
     @Singleton
     fun provideDayNightPref(impl: DayNightPrefImpl): DayNightPref = impl
+
+    @Provides
+    @Singleton
+    fun provideSearchHistory(impl: SearchHistoryPrefImpl): SearchHistoryPref = impl
 }
